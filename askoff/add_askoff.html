@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+        <title>请假</title>
+        <link rel="stylesheet" href="../css/weui.min.css"/>
+        <link rel="stylesheet" href="../css/example.css"/>
+
+        <style type="text/css"> 
+        .img-circle{
+            width: 60px;
+            height: 60px;
+
+        }
+        .closeLayer{
+            background: url(../img/icon.png) no-repeat;
+            width: 20px;
+            line-height: 20px;
+            display: inline-block;
+            background-position: -140px -120px;
+            z-index: 10;
+            position:relative; 
+            margin-left:-25px; 
+            top:-45px; 
+        }
+
+        </style> 
+
+        <script src="../js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript">
+        
+        </script>
+    </head>
+    <body>
+
+   
+    <div class="weui_cells_title">请假内容</div>
+    <div class="weui_cells weui_cells_form">
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <textarea class="weui_textarea" placeholder="请输入请假内容" rows="3"></textarea>
+               
+            </div>
+        </div>
+    </div>
+
+    <div class="weui_cells">
+            <div class="weui_cell weui_cell_select weui_select_after">
+                <div class="weui_cell_hd">
+                    请假类别：
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <select class="weui_select" name="select">
+                        <option value="1">请选择</option>
+                        <option value="2">事假</option>
+                        <option value="3">病假</option>
+                        <option value="4">产假</option>
+                    </select>
+                </div>
+            </div>
+    </div>
+    <div class="weui_cells_title">上传照片</div>
+    <div class="weui_cells weui_cells_form">
+            <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <div class="weui_uploader">
+                        
+                        <div class="weui_uploader_bd">
+                          
+                            <div class="weui_uploader_input_wrp">
+                                <input class="weui_uploader_input" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+   <div class="weui_cells_title">请假时间</div>
+   <div class="weui_cells">
+        <div class="weui_cell">
+                <div class="weui_cell_hd">开始时间：</div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="datetime-local" value="" placeholder=""/>
+                </div>
+            </div>
+        <div class="weui_cell">
+            <div class="weui_cell_hd">结束时间：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="datetime-local" value="" placeholder=""/>
+            </div>
+        </div>
+    </div>
+
+    <div class="weui_cells_title" >审批人</div>
+    <div class="weui_cells weui_cells_form">
+            <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                   
+                     
+                         <a href="javascript:;"><img src="../img/du.png" 
+   class="img-circle"></a>
+  
+                        <div class="closeLayer" >&nbsp;</div>
+
+                       
+                    
+                        <a href="javascript:;" id="addimg"><img src="../img/add.png" 
+   class="img-circle"></a>
+                     
+                   
+                </div>
+            </div>
+    </div>
+
+    <div class="weui_cells_title" >抄送人</div>
+    <div class="weui_cells weui_cells_form">
+            <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+
+                        <a href="javascript:;" id="addimg"><img src="../img/add.png" 
+   class="img-circle"></a>
+                     
+                   
+                </div>
+            </div>
+    </div>
+     <div class="weui_cells weui_cells_form"></div>
+   
+     <a href="askoff_list.html" class="weui_btn  weui_btn_primary" id="save">申请</a>
+    
+
+    </body>
+</html>
