@@ -66,17 +66,41 @@
             });
 
             $("#addimg").click(function(){
-                var $loadingToast = $('#loadingToast');
-                    if ($loadingToast.css('display') != 'none') {
-                        return;
-                    }
+                 var $loadingToast = $('#loadingToast');
+                //     if ($loadingToast.css('display') != 'none') {
+                //         return;
+                //     }
 
-                    $loadingToast.show();
-                    setTimeout(function () {
+                //     $loadingToast.show();
+                //     setTimeout(function () {
+                //         window.location.href='add_author.html';
+                //         $loadingToast.hide();
+                //     }, 1000);
+                $.ajax({
+                    type: "post",
+                    //contentType: "application/json",
+                    data : {  
+                               id : 1,  
+                               name : 'test',  
+                              
+                            },  
+                    url: "test.php",
+                    beforeSend: function () {
+                        $loadingToast.show();
+                    },
+                    success: function (data) {
                         window.location.href='add_author.html';
+                        // if (data == 1) {
+                        //     alert(1);
+                        // }
+                    },
+                    complete: function () {
                         $loadingToast.hide();
-                    }, 1000);
-
+                    },
+                    error: function (data) {
+                        //console.info("error: " + data.responseText);
+                    }
+                });
                
             });
             
