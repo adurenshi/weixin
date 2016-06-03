@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
         <title>新建报销</title>
+
         <link rel="stylesheet" href="../css/weui.min.css"/>
         <link rel="stylesheet" href="../css/example.css"/>
 
@@ -38,6 +39,11 @@
             height: 60px;
 
         }
+        .img-circle2{
+            width: 40px;
+            height: 40px;
+
+        }
         .closeLayer{
             background: url(../img/icon.png) no-repeat;
             width: 20px;
@@ -49,15 +55,76 @@
             margin-left:-25px; 
             top:-45px; 
         }
+       
+        .returnLayer{
+            background: url(../img/icon.png) no-repeat;
+            width: 18px;
+            line-height: 18px;
+            display: inline-block;
+            background-position: -60px -40px;
+           
+            z-index: 10;
+            float: right;
+            margin-top: -26px;
+            margin-right: 6px;
+        }
+       
+        .author{
+            position: absolute;
+            margin-top: 15px;
+        }
+        .noselectbutton{
+            background: url(../img/noselect.png) no-repeat;
+            width: 36px;
+            line-height: 36px;
+            display: inline-block;  
+            z-index: 10;
+            float: right;
+        }
+        .selectbutton{
+            background: url(../img/select.png) no-repeat;
+            width: 36px;
+            line-height: 36px;
+            display: inline-block;  
+            z-index: 10;
+            float: right;
+        }
+
         </style> 
 
         <script src="../js/jquery-1.11.3.min.js"></script>
-        <script type="text/javascript">
-        
-        </script>
+        <script>
+        $(function(){
+            $(".addnext").click(function(){
+                $(".shenpi").show("fast");
+                $(".Expenseform").hide();
+                $(".selectbutton").hide();
+                $(".noselectbutton").show();
+           });
+            $(".returnLayer").click(function(){
+                $(".shenpi").hide();
+                $(".Expenseform").show("fast");
+            });
+            $(".noselectbutton").click(function(){
+                $(this).hide();
+                $(this).next().show();
+                setTimeout(function () {
+                    $(".shenpi").hide();
+                    $(".Expenseform").show("fast");
+                  }, 300);
+                
+            });
+            // $(".selectbutton").click(function(){
+            //     $(this).hide();
+            //     $(this).prev().show();
+            // });
+        });
+           
+    </script>
     </head>
     <body>
 
+<div class="Expenseform">
     <div class="weui_cells weui_cells_form">
          <div class="weui_cell">
                 <div class="weui_cell_hd"><label class="weui_label">主题：</label></div>
@@ -78,12 +145,13 @@
             </div>
         </div>
 
-  
+    <div class="weui_cells">
         <div class="weui_cell">
             <div class="weui_cell_bd weui_cell_primary">
                 <a href="add_detail.html"><span class="addbutton" >&nbsp;</span><span  class="adddesc">添加一条明细</span></a>
             </div>
             <div class="weui_cell_ft">总计：<sapn class="price">￥0.00</sapn></div>
+        </div>
         </div>
 
         <div class="weui_cells weui_cells_form"></div>
@@ -101,7 +169,7 @@
 
                        
                     
-                        <a href="javascript:;" id="addimg"><img src="../img/add.png" 
+                        <a href="javascript:;" class="addnext" id="addimg"><img src="../img/add.png" 
    class="img-circle"></a>
                      
                    
@@ -111,5 +179,24 @@
         <div class="weui_cells weui_cells_form"></div>
         <div class="weui_cells weui_cells_form"></div>
         <a  class="weui_btn  weui_btn_primary" id="save">保存</a>
+    </div>
+<div class="shenpi" style="display: none;">
+<div class="weui_cells_title">选择审批人</div> <div class="returnLayer" >&nbsp;</div>
+                <div class="weui_cells">
+                    <div class="weui_cell">
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <img src="../img/du.png" 
+           class="img-circle2"><span class="author">adu</span>
+                        </div>
+                        <div class="noselectbutton">&nbsp;</div>
+                        <div class="selectbutton" style="display:none;">&nbsp;</div>
+                    </div>
+        </div>
+
+        <div class="weui_cells weui_cells_form"></div>
+        <div class="weui_cells weui_cells_form"></div>
+       
+
+</div>
     </body>
 </html>
