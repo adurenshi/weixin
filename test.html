@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+        <title>公司考勤</title>
+        <link rel="stylesheet" href="css/weui.min.css"/>
+        <link rel="stylesheet" href="css/example.css"/>
+        <link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
+		<link rel="stylesheet" type="text/css" href="easyui/demo.css">
+		<script type="text/javascript" src="easyui/jquery.min.js"></script>
+		<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+		<script type="text/javascript" src="easyui/easyui-lang-zh_CN.js"></script>
+
+        <style type="text/css"> 
+        #showday{
+            padding-top: 90px;
+            text-align: center;
+            color: #10AEFF;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        #showtime{
+            padding-top: 20px;
+            text-align: center;
+            color: #10AEFF;
+            font-size: 60px;
+            padding-bottom: 30px;
+        }
+        .weui_cell{
+            height: 50px;
+        }
+        #work{
+            font-size: 18px;
+        }
+        #offwork{
+            font-size: 18px;
+        }
+        .calendar-header {
+        	background-color: #fff;
+		    position: relative;
+		    height: 42px;
+		}
+		.calendar-title span {
+			font-size: 16px;
+			font-weight: bold;
+			padding-top:6px;
+		}
+		.calendar-nextmonth {
+			top:30%;
+		   	width:29px;
+		    height: 29px;
+		    background: url('arrow.png') ;
+		}
+		.calendar-prevmonth{
+			top:35%;
+		   	width:29px;
+		    height: 29px;
+		    background: url('leftarrow.png') ;
+		}
+		.calendar-nextyear{
+			display: none;
+		}
+		.calendar-prevyear{
+			display: none;
+		}
+		.calendar-selected {
+			/*border-radius: 50%;*/
+			background-color: #ffab3f;
+		}
+		.calendar table td, .calendar table th {
+		    font-size: 14px;
+		}
+
+
+        </style> 
+        <script type="text/javascript">
+        $(function(){
+        	$(".calendar-header").after('<span style="margin-right:50px;height:30%;">test</span><span style="width:30%;">test</span><span style="width:30%;">test</span>');
+            function showtime(){
+                var Time = new Date();
+                var hours = Time.getHours();
+                var minutes = Time.getMinutes();
+                var seconds = Time.getSeconds(); 
+                var weekday=new Array(7);
+                weekday[0]="星期日";
+                weekday[1]="星期一";
+                weekday[2]="星期二";
+                weekday[3]="星期三";
+                weekday[4]="星期四";
+                weekday[5]="星期五";
+                weekday[6]="星期六";
+                var year = Time.getFullYear();
+                var month = Time.getMonth()+1;
+                var day = Time.getDate();
+                month = checkTime(month);
+                day = checkTime(day);
+                minutes = checkTime(minutes);
+                seconds = checkTime(seconds);
+                var formattime=hours+":"+minutes+":"+seconds;
+                var formatday=year+"年"+month+"月"+day+"日"+" "+weekday[Time.getDay()];
+                $("#showday").text(formatday);
+                $("#showtime").text(formattime);
+                
+            }
+
+            function checkTime(i)
+            {
+                if (i<10) {
+                    i="0" + i;
+                }
+                  return i;
+            }
+            setInterval(function () {
+                        showtime();
+                    }, 1000);
+            
+            $("#qiandao").click(function(){
+                var $loadingToast = $('#loadingToast');
+                    if ($loadingToast.css('display') != 'none') {
+                        return;
+                    }
+
+                    $loadingToast.show();
+                    setTimeout(function () {
+                        //window.location.href='add_author.html';
+                        $loadingToast.hide();
+                    }, 1000);
+
+               
+            });
+        });
+        </script>
+    </head>
+    <body>
+
+	<div class="easyui-calendar" style="width:100%;height:60%;"></div>
+	
+
+         <div class="weui_cells">
+            <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>上班</p>
+                </div>
+                   <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary" id="work">签到</a>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>下班</p>
+                </div>
+                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary" id="offwork">签到</a>
+                
+            </div>
+        </div>
+
+         <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+                <div class="weui_mask_transparent"></div>
+                <div class="weui_toast">
+                    <div class="weui_loading">
+                        <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+                    </div>
+                    <p class="weui_toast_content">数据加载中</p>
+                </div>
+            </div>
+   
+    </body>
+</html>

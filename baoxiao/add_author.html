@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+        <title>备忘录</title>
+        <link rel="stylesheet" href="css/weui.min.css"/>
+        <link rel="stylesheet" href="css/example.css"/>
+
+        <style type="text/css"> 
+        .weui_cells_title{
+            font-size: 16px;
+        }
+        .returnLayer{
+            background: url(img/icon.png) no-repeat;
+            width: 18px;
+            line-height: 18px;
+            display: inline-block;
+            background-position: -60px -40px;
+           
+            z-index: 10;
+            float: right;
+            margin-top: -26px;
+            margin-right: 6px;
+        }
+        .img-circle{
+            width: 40px;
+            height: 40px;
+
+        }
+        .author{
+            position: absolute;
+            margin-top: 15px;
+        }
+        .noselectbutton{
+            background: url(img/noselect.png) no-repeat;
+            width: 36px;
+            line-height: 36px;
+            display: inline-block;  
+            z-index: 10;
+            float: right;
+        }
+        .selectbutton{
+            background: url(img/select.png) no-repeat;
+            width: 36px;
+            line-height: 36px;
+            display: inline-block;  
+            z-index: 10;
+            float: right;
+        }
+        </style> 
+
+        <script src="js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript">
+        $(function(){
+            $(".returnLayer").click(function(){
+                window.history.go(-1);
+            });
+
+            $(".noselectbutton").click(function(){
+                $(".noselectbutton").hide();
+                $(".selectbutton").show();
+
+            });
+            $(".selectbutton").click(function(){
+                $(".noselectbutton").show();
+                $(".selectbutton").hide();
+
+            });
+            $("#confirm").click(function(){
+                window.history.go(-1);
+            });
+        });
+        </script>
+    </head>
+    <body>
+
+        <div class="weui_cells_title">前端人员</div> <div class="returnLayer" >&nbsp;</div>
+                <div class="weui_cells">
+                    <div class="weui_cell">
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <img src="img/du.png" 
+           class="img-circle"><span class="author">adu</span>
+                        </div>
+                        <div class="noselectbutton">&nbsp;</div>
+                        <div class="selectbutton" style="display:none;">&nbsp;</div>
+                    </div>
+        </div>
+
+        <div class="weui_cells weui_cells_form"></div>
+        <div class="weui_cells weui_cells_form"></div>
+        <a  class="weui_btn  weui_btn_primary" id="confirm">确定</a>
+
+   
+    </body>
+</html>
